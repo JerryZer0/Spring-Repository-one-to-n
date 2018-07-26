@@ -46,5 +46,11 @@ public class KlassController {
         klassRepository.save(klass);
     }
 
+    @Transactional
+    @DeleteMapping("/klasses/{id}")
+    public void delete(@PathVariable int id) {
+        Klass klass = klassRepository.findById(id).get();
+        klassRepository.delete(klass);
+    }
 
 }
