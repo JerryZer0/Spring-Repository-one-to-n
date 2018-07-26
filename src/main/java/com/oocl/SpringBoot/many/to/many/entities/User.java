@@ -16,7 +16,7 @@ public class User {
     private String name;
     private String sex;
     @JsonIgnore
-    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "users")
+    @ManyToMany(mappedBy = "users")
     private Set<Group> groups;
 
     public User() {

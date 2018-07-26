@@ -32,4 +32,18 @@ public class GroupController {
         return new GroupDTO(group);
     }
 
+    @Transactional
+    @PutMapping(path = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public Group update(@RequestBody Group group){
+        groupRepository.save(group);
+        return new GroupDTO(group);
+    }
+
+    @Transactional
+    @DeleteMapping(path = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public Group delete(@PathVariable int id){
+        Group group = groupRepository.findById(id).get();
+        groupRepository.delete(group);
+        return new GroupDTO(group);
+    }
 }

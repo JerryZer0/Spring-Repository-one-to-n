@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
+@Table(name = "ita_group")
 public class Group {
 
     @Id
@@ -15,8 +16,9 @@ public class Group {
 
     private String name;
 
-    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    private Set<User> users = new HashSet<>();
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "user_group",joinColumns = @JoinColumn(name = "user_id"),inverseJoinColumns = @JoinColumn(name = "group_id"))
+    private Set<User> users;
 
     public Group() {
     }
