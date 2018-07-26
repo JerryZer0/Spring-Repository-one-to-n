@@ -1,6 +1,6 @@
 package com.oocl.SpringBoot.one.to.one.entities;
 
-import org.springframework.data.annotation.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 
@@ -13,7 +13,7 @@ public class Klass {
 
     private String name;
 
-    @JoinColumn(name = "leader_id")
+//    @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL)
     private Leader leader;
 

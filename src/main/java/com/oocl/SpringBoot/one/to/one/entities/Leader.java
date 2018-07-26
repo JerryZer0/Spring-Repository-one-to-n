@@ -1,10 +1,6 @@
 package com.oocl.SpringBoot.one.to.one.entities;
 
-import org.springframework.data.annotation.Id;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.*;
 
 @Entity
 public class Leader {
@@ -16,6 +12,10 @@ public class Leader {
     private String name;
 
     private String sex;
+
+//    @JoinColumn(name = "klass_id")
+//    @OneToOne(cascade = CascadeType.MERGE)
+//    private Klass klass;
 
     public Leader() {
     }
