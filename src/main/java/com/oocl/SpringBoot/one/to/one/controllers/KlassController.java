@@ -1,9 +1,7 @@
 package com.oocl.SpringBoot.one.to.one.controllers;
 
 import com.oocl.SpringBoot.one.to.one.controllers.dto.KlassDTO;
-import com.oocl.SpringBoot.one.to.one.controllers.dto.LeaderDTO;
 import com.oocl.SpringBoot.one.to.one.entities.Klass;
-import com.oocl.SpringBoot.one.to.one.entities.Leader;
 import com.oocl.SpringBoot.one.to.one.repositories.KlassRepository;
 import com.oocl.SpringBoot.one.to.one.repositories.LeaderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,9 +26,11 @@ public class KlassController {
 
     @Transactional
     @PostMapping(path = "/klasses", produces = MediaType.APPLICATION_JSON_VALUE)
-    public void addKlass(@RequestBody Klass klass) {
+    public KlassDTO addKlass(@RequestBody Klass klass) {
         System.err.println(klass.getId());
         klassRepository.save(klass);
+        //return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        return  new KlassDTO(klass);
     }
 
     @Transactional

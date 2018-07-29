@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.*;
 public class GroupController {
 
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
 
     @Autowired
-    GroupRepository groupRepository;
+    private GroupRepository groupRepository;
 
     @Transactional
     @PostMapping(path = "",produces = MediaType.APPLICATION_JSON_VALUE)
@@ -27,23 +27,24 @@ public class GroupController {
 
     @Transactional
     @GetMapping(path = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
-    public Group findGroutById(@PathVariable int id){
+    public GroupDTO findGroutById(@PathVariable int id){
         Group group = groupRepository.findById(id).get();
         return new GroupDTO(group);
     }
 
     @Transactional
     @PutMapping(path = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
-    public Group update(@RequestBody Group group){
+    public GroupDTO update(@RequestBody Group group){
         groupRepository.save(group);
         return new GroupDTO(group);
     }
 
     @Transactional
     @DeleteMapping(path = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
-    public Group delete(@PathVariable int id){
+    public void delete(@PathVariable int id){
+
         Group group = groupRepository.findById(id).get();
         groupRepository.delete(group);
-        return new GroupDTO(group);
+//        return group;
     }
 }

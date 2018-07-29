@@ -1,5 +1,5 @@
 CREATE TABLE `leader`(
     `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `name` VARCHAR(20) NOT NULL,
-    `sex` VARCHAR(5) NOT NULL
+    `sex` VARCHAR(10) NOT NULL
 );
